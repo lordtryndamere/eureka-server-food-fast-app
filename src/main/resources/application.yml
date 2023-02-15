@@ -1,0 +1,70 @@
+spring:
+  application:
+    name: clustered-eureka
+  profiles:
+    active: default
+server:
+  port: 8761
+eureka:
+  instance:
+    hostname: default-eureka-server.com
+    appname: peer-1
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+#---
+#spring:
+#  config:
+#    activate:
+#      on-profile: peer1
+#  application:
+#    name: clustered-eureka
+#server:
+#  port: 8761
+#eureka:
+#  client:
+#    register-with-eureka: true
+#    fetch-registry: true
+#    service-url:
+#      defaultZone: http://eureka-peer2.com:8762/eureka/ ,http://eureka-peer3.com:8763/eureka/
+#  instance:
+#    hostname: eureka-peer1.com
+#
+#---
+#spring:
+#
+#  config:
+#    activate:
+#      on-profile: peer2
+#  application:
+#    name: clustered-eureka
+#server:
+#  port: 8762
+#eureka:
+#  instance:
+#    hostname: eureka-peer2.com
+#  client:
+#    register-with-eureka: true
+#    fetch-registry: true
+#    service-url:
+#      defaultZone: http://eureka-peer1.com:8761/eureka/ ,http://eureka-peer3.com:8763/eureka/
+#---
+#spring:
+#
+#  config:
+#    activate:
+#      on-profile: peer3
+#  application:
+#    name: clustered-eureka
+#server:
+#  port: 8763
+#eureka:
+#  instance:
+#    hostname: eureka-peer3.com
+#  client:
+#    register-with-eureka: true
+#    fetch-registry: true
+#    service-url:
+#      defaultZone: http://eureka-peer1.com:8761/eureka/ ,http://eureka-peer2.com:8762/eureka/
